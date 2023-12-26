@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfilePic extends StatelessWidget {
-  const ProfilePic({
-    Key? key,
-  }) : super(key: key);
+  const ProfilePic({Key? key, this.photoURL}) : super(key: key);
 
+  final String? photoURL;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -15,8 +14,9 @@ class ProfilePic extends StatelessWidget {
         fit: StackFit.expand,
         clipBehavior: Clip.none,
         children: [
-          const CircleAvatar(
-            backgroundImage: AssetImage("assets/images/Profile Image.png"),
+          CircleAvatar(
+            backgroundImage: NetworkImage(
+                photoURL ?? 'https://en.gravatar.com/avatar/placeholder'),
           ),
           Positioned(
             right: -16,
@@ -26,7 +26,8 @@ class ProfilePic extends StatelessWidget {
               width: 46,
               child: TextButton(
                 style: TextButton.styleFrom(
-                  foregroundColor: Colors.white, shape: RoundedRectangleBorder(
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),
                     side: const BorderSide(color: Colors.white),
                   ),

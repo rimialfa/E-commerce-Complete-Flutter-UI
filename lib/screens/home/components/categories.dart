@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:http/http.dart' as http;
 
 class Categories extends StatelessWidget {
   const Categories({super.key});
@@ -7,10 +8,10 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> categories = [
-      {"icon": "assets/icons/Flash Icon.svg", "text": "Flash Deal"},
-      {"icon": "assets/icons/Bill Icon.svg", "text": "Bill"},
-      {"icon": "assets/icons/Game Icon.svg", "text": "Game"},
-      {"icon": "assets/icons/Gift Icon.svg", "text": "Daily Gift"},
+      {"icon": "assets/icons/Flash Icon.svg", "text": "Impact"},
+      {"icon": "assets/icons/Bill Icon.svg", "text": "Support"},
+      {"icon": "assets/icons/Game Icon.svg", "text": "Sponsor"},
+      {"icon": "assets/icons/Gift Icon.svg", "text": "Gifts"},
       {"icon": "assets/icons/Discover.svg", "text": "More"},
     ];
     return Padding(

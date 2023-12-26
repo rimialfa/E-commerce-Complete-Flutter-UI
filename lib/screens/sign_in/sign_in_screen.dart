@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app/services/auth.dart';
 
 import '../../components/no_account_text.dart';
 import '../../components/socal_card.dart';
@@ -21,20 +22,23 @@ class SignInScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(height: 16),
-                  const Text(
-                    "Welcome Back",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const Text(
-                    "Sign in with your email and password  \nor continue with social media",
-                    textAlign: TextAlign.center,
-                  ),
+                  Image.asset('assets/images/alsafakw-ar-logo.png', width: 250),
+                  const SizedBox(height: 16),
+                  // const Text(
+                  //   "Welcome Back",
+                  //   style: TextStyle(
+                  //     color: Colors.black,
+                  //     fontSize: 24,
+                  //     fontWeight: FontWeight.bold,
+                  //   ),
+                  // ),
+                  // const Text(
+                  //   "Sign in with your email and password  \nor continue with social media",
+                  //   textAlign: TextAlign.center,
+                  // ),
                   const SizedBox(height: 16),
                   const SignForm(),
                   const SizedBox(height: 16),
@@ -43,7 +47,7 @@ class SignInScreen extends StatelessWidget {
                     children: [
                       SocalCard(
                         icon: "assets/icons/google-icon.svg",
-                        press: () {},
+                        press: () => AuthService.googleLogin(),
                       ),
                       SocalCard(
                         icon: "assets/icons/facebook-2.svg",

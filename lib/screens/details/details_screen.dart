@@ -1,8 +1,7 @@
+import 'package:app/services/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shop_app/screens/cart/cart_screen.dart';
-
-import '../../models/Product.dart';
+import 'package:app/screens/cart/cart_screen.dart';
 import 'components/color_dots.dart';
 import 'components/product_description.dart';
 import 'components/product_images.dart';
@@ -15,9 +14,8 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ProductDetailsArguments agrs =
+    final agrs =
         ModalRoute.of(context)!.settings.arguments as ProductDetailsArguments;
-    final product = agrs.product;
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
@@ -76,23 +74,23 @@ class DetailsScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          ProductImages(product: product),
+          ProductImages(project: agrs.project),
           TopRoundedContainer(
             color: Colors.white,
             child: Column(
               children: [
                 ProductDescription(
-                  product: product,
+                  project: agrs.project,
                   pressOnSeeMore: () {},
                 ),
-                TopRoundedContainer(
-                  color: const Color(0xFFF6F7F9),
-                  child: Column(
-                    children: [
-                      ColorDots(product: product),
-                    ],
-                  ),
-                ),
+                // TopRoundedContainer(
+                //   color: const Color(0xFFF6F7F9),
+                //   child: Column(
+                //     children: [
+                //       ColorDots(product: product),
+                //     ],
+                //   ),
+                // ),
               ],
             ),
           ),
@@ -117,7 +115,6 @@ class DetailsScreen extends StatelessWidget {
 }
 
 class ProductDetailsArguments {
-  final Product product;
-
-  ProductDetailsArguments({required this.product});
+  final Project project;
+  ProductDetailsArguments({required this.project});
 }

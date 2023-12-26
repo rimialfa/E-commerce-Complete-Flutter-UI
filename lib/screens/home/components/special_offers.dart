@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/screens/products/products_screen.dart';
+import 'package:app/screens/products/products_screen.dart';
 
 import 'section_title.dart';
 
@@ -15,7 +15,7 @@ class SpecialOffers extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: SectionTitle(
-            title: "Special for you",
+            title: "Urgent projects",
             press: () {},
           ),
         ),
@@ -24,17 +24,17 @@ class SpecialOffers extends StatelessWidget {
           child: Row(
             children: [
               SpecialOfferCard(
-                image: "assets/images/Image Banner 2.png",
-                category: "Smartphone",
-                numOfBrands: 18,
+                image: "assets/images/ImageBanner2.jpg",
+                category: "Widows",
+                numOfBrands: 8,
                 press: () {
                   Navigator.pushNamed(context, ProductsScreen.routeName);
                 },
               ),
               SpecialOfferCard(
-                image: "assets/images/Image Banner 3.png",
-                category: "Fashion",
-                numOfBrands: 24,
+                image: "assets/images/ImageBanner3.jpg",
+                category: "Orphans",
+                numOfBrands: 12,
                 press: () {
                   Navigator.pushNamed(context, ProductsScreen.routeName);
                 },
@@ -69,15 +69,12 @@ class SpecialOfferCard extends StatelessWidget {
         onTap: press,
         child: SizedBox(
           width: 242,
-          height: 100,
+          height: 131,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: Stack(
               children: [
-                Image.asset(
-                  image,
-                  fit: BoxFit.cover,
-                ),
+                Image.asset(image, fit: BoxFit.cover),
                 Container(
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
@@ -108,7 +105,7 @@ class SpecialOfferCard extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        TextSpan(text: "$numOfBrands Brands")
+                        TextSpan(text: "$numOfBrands projects")
                       ],
                     ),
                   ),

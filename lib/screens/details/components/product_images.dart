@@ -1,15 +1,15 @@
+import 'package:app/services/models.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
-import '../../../models/Product.dart';
 
 class ProductImages extends StatefulWidget {
   const ProductImages({
     Key? key,
-    required this.product,
+    required this.project,
   }) : super(key: key);
 
-  final Product product;
+  final Project project;
 
   @override
   _ProductImagesState createState() => _ProductImagesState();
@@ -21,31 +21,36 @@ class _ProductImagesState extends State<ProductImages> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          width: 238,
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: Image.asset(widget.product.images[selectedImage]),
-          ),
+        Hero(
+          tag: widget.project.id,
+          child: Image.network(widget.project.image,
+              width: MediaQuery.of(context).size.width),
         ),
+        // SizedBox(
+        //   width: 238,
+        //   child: AspectRatio(
+        //     aspectRatio: 1,
+        //     child: Image.asset(widget.product.images[selectedImage]),
+        //   ),
+        // ),
         // SizedBox(height: 20),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ...List.generate(
-              widget.product.images.length,
-              (index) => SmallProductImage(
-                isSelected: index == selectedImage,
-                press: () {
-                  setState(() {
-                    selectedImage = index;
-                  });
-                },
-                image: widget.product.images[index],
-              ),
-            ),
-          ],
-        )
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: [
+        //     ...List.generate(
+        //       widget.product.images.length,
+        //       (index) => SmallProductImage(
+        //         isSelected: index == selectedImage,
+        //         press: () {
+        //           setState(() {
+        //             selectedImage = index;
+        //           });
+        //         },
+        //         image: widget.product.images[index],
+        //       ),
+        //     ),
+        //   ],
+        // )
       ],
     );
   }

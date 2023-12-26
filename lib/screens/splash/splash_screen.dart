@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:app/guard.dart';
 
 import '../../constants.dart';
 import '../sign_in/sign_in_screen.dart';
 import 'components/splash_content.dart';
 
 class SplashScreen extends StatefulWidget {
-  static String routeName = "/splash";
+  static String routeName = "/";
 
   const SplashScreen({super.key});
 
@@ -17,16 +18,15 @@ class _SplashScreenState extends State<SplashScreen> {
   int currentPage = 0;
   List<Map<String, String>> splashData = [
     {
-      "text": "Welcome to Tokoto, Let’s shop!",
+      "text": "Welcome to Alsafa, Let's Donate!",
       "image": "assets/images/splash_1.png"
     },
     {
-      "text":
-          "We help people conect with store \naround United State of America",
+      "text": "We help people donating in the right place",
       "image": "assets/images/splash_2.png"
     },
     {
-      "text": "We show the easy way to shop. \nJust stay at home with us",
+      "text": "We show the easy way to donate. \nJust stay at home with us",
       "image": "assets/images/splash_3.png"
     },
   ];
@@ -81,9 +81,9 @@ class _SplashScreenState extends State<SplashScreen> {
                       const Spacer(flex: 3),
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, SignInScreen.routeName);
+                          Navigator.pushNamed(context, Guard.routeName);
                         },
-                        child: const Text("Continue"),
+                        child: const Text("CONTINUE"),
                       ),
                       const Spacer(),
                     ],

@@ -1,3 +1,4 @@
+import 'package:app/services/auth.dart';
 import 'package:flutter/material.dart';
 
 import 'components/profile_menu.dart';
@@ -9,6 +10,7 @@ class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    var photoURL = AuthService().user?.photoURL;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Profile"),
@@ -17,7 +19,7 @@ class ProfileScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: Column(
           children: [
-            const ProfilePic(),
+            ProfilePic(photoURL: photoURL),
             const SizedBox(height: 20),
             ProfileMenu(
               text: "My Account",
@@ -42,7 +44,7 @@ class ProfileScreen extends StatelessWidget {
             ProfileMenu(
               text: "Log Out",
               icon: "assets/icons/Log out.svg",
-              press: () {},
+              press: () => AuthService().signOut(),
             ),
           ],
         ),

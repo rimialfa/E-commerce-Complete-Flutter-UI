@@ -23,6 +23,8 @@ class SignUpScreen extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 16),
+                  Image.asset('assets/images/alsafakw-ar-logo.png', width: 250),
+                  const SizedBox(height: 16),
                   const Text("Register Account", style: headingStyle),
                   const Text(
                     "Complete your details or continue \nwith social media",
