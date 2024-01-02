@@ -1,7 +1,11 @@
 import 'dart:convert';
 
 import 'package:app/constants.dart';
+import 'package:app/screens/home/new_projects_screen.dart';
+import 'package:app/screens/shared/error.dart';
+import 'package:app/screens/shared/loading.dart';
 import 'package:app/services/models.dart';
+import 'package:app/services/project.dart';
 import 'package:flutter/material.dart';
 import 'components/categories.dart';
 import 'components/discount_banner.dart';
@@ -22,35 +26,73 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<dynamic> projects = [];
-  bool isLoaded = false;
+  late int tabIndex;
   @override
   void initState() {
-    getNewProjects();
+    // getNewProjects();
     super.initState();
+    tabIndex = 0;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(vertical: 16),
+    const tabs = [
+      Tab(text: 'New projects'),
+      Tab(text: 'Near to complete'),
+      Tab(text: 'Urgent'),
+      Tab(text: 'test 1'),
+      Tab(text: 'test 2'),
+      Tab(text: 'test 3'),
+    ];
+
+    const List<Widget> myContents = [
+      NewProjectsScreen(),
+      Text('This is my Near to complete screen'),
+      Text('This is my Urgent screen')
+    ];
+
+    return DefaultTabController(
+      length: tabs.length,
+      child: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 16),
           child: Column(
             children: [
-              HomeHeader(),
-              DiscountBanner(),
-              Categories(),
-              SpecialOffers(),
+              const HomeHeader(),
+              const DiscountBanner(),
+              TabBar(
+                onTap: (index) {
+                  setState(() {
+                    tabIndex = index;
+                  });
+                },
+                tabs: tabs,
+                isScrollable: true,
+                tabAlignment: TabAlignment.start,
+                dividerColor: Colors.transparent,
+              ),
               const SizedBox(height: 20),
-              Visibility(
-                  visible: isLoaded,
-                  replacement: const Padding(
-                    padding: EdgeInsets.only(top: 75),
-                    child: CircularProgressIndicator(
-                      color: kPrimaryColor,
-                    ),
-                  ),
-                  child: PopularProducts(projects: projects)),
+              myContents[tabIndex],
+              // TabBarView(
+              //   children: [
+              //     Icon(Icons.directions_car),
+              //     Icon(Icons.directions_transit),
+              //     Icon(Icons.directions_bike),
+              //   ],
+              // ),
+              // Categories(),
+              // SpecialOffers(),
+              // const SizedBox(height: 20),
+
+              // Visibility(
+              //     visible: isLoaded,
+              //     replacement: const Padding(
+              //       padding: EdgeInsets.only(top: 75),
+              //       child: CircularProgressIndicator(
+              //         color: kPrimaryColor,
+              //       ),
+              //     ),
+              //     child: PopularProducts(projects: projects)),
               const SizedBox(height: 20),
             ],
           ),
@@ -59,18 +101,18 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Future<void> getNewProjects() async {
-    const url = 'http://10.0.2.2:8000/api/products';
-    final uri = Uri.parse(url);
-    final response = await http.get(uri);
-    final json = jsonDecode(response.body);
-    final data = json['data'];
-    // print(data);
-    List<dynamic> p = data.map((d) => Project.fromJson(d)).toList();
+  // Future<void> getNewProjects() async {
+  //   const url = 'http://10.0.2.2:8000/api/products';
+  //   final uri = Uri.parse(url);
+  //   final response = await http.get(uri);
+  //   final json = jsonDecode(response.body);
+  //   final data = json['data'];
+  //   // print(data);
+  //   List<dynamic> p = data.map((d) => Project.fromJson(d)).toList();
 
-    setState(() {
-      projects = p;
-      isLoaded = true;
-    });
-  }
+  //   setState(() {
+  //     projects = p;
+  //     isLoaded = true;
+  //   });
+  // }
 }

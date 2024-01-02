@@ -1,6 +1,7 @@
 import 'package:app/services/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../constants.dart';
 
@@ -26,30 +27,38 @@ class ProductCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(
-                color: kSecondaryColor.withOpacity(0.5),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Hero(tag: project.id, child: Image.network(project.image)),
+            Stack(
+              alignment: const Alignment(0.9, 0.8),
+              children: [
+                Container(
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    color: kSecondaryColor.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Hero(
+                      tag: project.id, child: Image.network(project.image)),
+                ),
+                CircularPercentIndicator(
+                  radius: 25.0,
+                  lineWidth: 5.0,
+                  percent: 0.5,
+                  center: const Text(
+                    "50%",
+                    style: TextStyle(color: Colors.white, fontSize: 11),
+                  ),
+                  progressColor: kPrimaryColor,
+                ),
+              ],
             ),
             const SizedBox(height: 8),
-            Text(
-              project.name,
-              style: Theme.of(context).textTheme.bodyMedium,
-              maxLines: 2,
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "\KD ${project.price}",
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: kPrimaryColor,
-                  ),
+                  project.name,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                  maxLines: 2,
                 ),
                 InkWell(
                   borderRadius: BorderRadius.circular(50),
@@ -72,6 +81,19 @@ class ProductCard extends StatelessWidget {
                               : const Color(0xFFDBDEE4),
                           BlendMode.srcIn),
                     ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Raised: KD ${project.price}",
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: kPrimaryColor,
                   ),
                 ),
               ],
