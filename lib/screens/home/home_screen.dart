@@ -37,18 +37,19 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     const tabs = [
-      Tab(text: 'New projects'),
-      Tab(text: 'Near to complete'),
+      Tab(text: 'New Projects'),
       Tab(text: 'Urgent'),
-      Tab(text: 'test 1'),
-      Tab(text: 'test 2'),
-      Tab(text: 'test 3'),
+      Tab(text: 'Need Support'),
+      Tab(text: 'Near to Complete'),
+      Tab(text: 'More Impact'),
     ];
 
     const List<Widget> myContents = [
       NewProjectsScreen(),
-      Text('This is my Near to complete screen'),
-      Text('This is my Urgent screen')
+      SpecialOffers(),
+      Text('This is Need Support screen'),
+      Text('This is Near to Complete screen'),
+      Text('This is More Impact screen'),
     ];
 
     return DefaultTabController(
@@ -69,7 +70,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 tabs: tabs,
                 isScrollable: true,
                 tabAlignment: TabAlignment.start,
-                dividerColor: Colors.transparent,
+                labelColor: kPrimaryColor,
+                indicatorColor: kPrimaryColor,
               ),
               const SizedBox(height: 20),
               myContents[tabIndex],

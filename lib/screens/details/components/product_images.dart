@@ -1,5 +1,6 @@
 import 'package:app/services/models.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../constants.dart';
 
@@ -19,38 +20,23 @@ class _ProductImagesState extends State<ProductImages> {
   int selectedImage = 0;
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
+      alignment: const Alignment(0.9, 0.9),
       children: [
         Hero(
           tag: widget.project.id,
           child: Image.network(widget.project.image,
               width: MediaQuery.of(context).size.width),
         ),
-        // SizedBox(
-        //   width: 238,
-        //   child: AspectRatio(
-        //     aspectRatio: 1,
-        //     child: Image.asset(widget.product.images[selectedImage]),
-        //   ),
-        // ),
-        // SizedBox(height: 20),
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.center,
-        //   children: [
-        //     ...List.generate(
-        //       widget.product.images.length,
-        //       (index) => SmallProductImage(
-        //         isSelected: index == selectedImage,
-        //         press: () {
-        //           setState(() {
-        //             selectedImage = index;
-        //           });
-        //         },
-        //         image: widget.product.images[index],
-        //       ),
-        //     ),
-        //   ],
-        // )
+        SvgPicture.asset(
+          "assets/icons/Heart Icon_2.svg",
+          colorFilter: ColorFilter.mode(
+              widget.project.isFavourite
+                  ? const Color(0xFFFF4848)
+                  : const Color(0xFFDBDEE4),
+              BlendMode.srcIn),
+          height: 16,
+        ),
       ],
     );
   }

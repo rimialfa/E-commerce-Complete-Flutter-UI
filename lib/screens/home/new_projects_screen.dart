@@ -20,7 +20,10 @@ class NewProjectsScreen extends StatelessWidget {
             var projects = snapshot.data!;
             return PopularProducts(projects: projects);
           } else {
-            return const LoadingScreen();
+            return const Padding(
+              padding: EdgeInsets.symmetric(vertical: 30),
+              child: LoadingScreen(),
+            );
           }
         });
   }

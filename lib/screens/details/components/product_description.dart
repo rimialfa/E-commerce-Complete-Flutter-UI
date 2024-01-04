@@ -21,71 +21,53 @@ class ProductDescription extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
             project.name,
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
-        Align(
-          alignment: Alignment.centerRight,
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            width: 48,
-            decoration: BoxDecoration(
-              color: project.isFavourite
-                  ? const Color(0xFFFFE6E6)
-                  : const Color(0xFFF5F6F9),
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20),
-                bottomLeft: Radius.circular(20),
+        const Card(
+          elevation: 3,
+          color: Colors.white,
+          margin: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ListTile(
+                leading: Icon(Icons.location_pin),
+                title: Text('Kuwait'),
               ),
-            ),
-            child: SvgPicture.asset(
-              "assets/icons/Heart Icon_2.svg",
-              colorFilter: ColorFilter.mode(
-                  project.isFavourite
-                      ? const Color(0xFFFF4848)
-                      : const Color(0xFFDBDEE4),
-                  BlendMode.srcIn),
-              height: 16,
-            ),
+            ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(
-            left: 20,
-            right: 64,
-          ),
-          child: Text(
-            project.description,
-            maxLines: 3,
+        Card(
+          elevation: 3,
+          color: Colors.white,
+          margin: EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ListTile(
+                leading: const Icon(Icons.description),
+                title: Text(project.description),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  TextButton(
+                    child: const Text(
+                      'MORE',
+                      style: TextStyle(color: kPrimaryColor),
+                    ),
+                    onPressed: () {/* ... */},
+                  ),
+                  const SizedBox(width: 16),
+                ],
+              ),
+            ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 12,
-          ),
-          child: GestureDetector(
-            onTap: () {},
-            child: const Row(
-              children: [
-                Text(
-                  "See More Detail",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w600, color: kPrimaryColor),
-                ),
-                SizedBox(width: 5),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 12,
-                  color: kPrimaryColor,
-                ),
-              ],
-            ),
-          ),
-        )
       ],
     );
   }

@@ -98,16 +98,33 @@ class DetailsScreen extends StatelessWidget {
       ),
       bottomNavigationBar: TopRoundedContainer(
         color: Colors.white,
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, CartScreen.routeName);
-              },
-              child: const Text("Add To Cart"),
+        child: Row(
+          children: [
+            Flexible(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, CartScreen.routeName);
+                  },
+                  child: const Text("Donate Now"),
+                ),
+              ),
             ),
-          ),
+            Flexible(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, CartScreen.routeName);
+                  },
+                  child: const Text("Add To Cart"),
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
