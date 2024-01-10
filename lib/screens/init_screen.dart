@@ -29,7 +29,7 @@ class _InitScreenState extends State<InitScreen> {
   final pages = [
     const HomeScreen(),
     const Center(
-      child: Text("Categories Screen"),
+      child: Text("Donate by Category Screen"),
     ),
     // const FavoriteScreen(),
     const Center(

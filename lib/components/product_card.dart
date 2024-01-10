@@ -37,7 +37,9 @@ class ProductCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Hero(
-                      tag: project.id, child: Image.network(project.image)),
+                    tag: project.id,
+                    child: Image.network(project.image),
+                  ),
                 ),
                 CircularPercentIndicator(
                   radius: 25.0,

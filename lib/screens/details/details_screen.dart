@@ -21,6 +21,7 @@ class DetailsScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       backgroundColor: const Color(0xFFF5F6F9),
       appBar: AppBar(
+        title: Text(agrs.project.name),
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: Padding(
@@ -42,35 +43,35 @@ class DetailsScreen extends StatelessWidget {
             ),
           ),
         ),
-        actions: [
-          Row(
-            children: [
-              Container(
-                margin: const EdgeInsets.only(right: 20),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(14),
-                ),
-                child: Row(
-                  children: [
-                    const Text(
-                      "4.7",
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const SizedBox(width: 4),
-                    SvgPicture.asset("assets/icons/Star Icon.svg"),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ],
+        // actions: [
+        //   Row(
+        //     children: [
+        //       Container(
+        //         margin: const EdgeInsets.only(right: 20),
+        //         padding:
+        //             const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        //         decoration: BoxDecoration(
+        //           color: Colors.white,
+        //           borderRadius: BorderRadius.circular(14),
+        //         ),
+        //         child: Row(
+        //           children: [
+        //             const Text(
+        //               "4.7",
+        //               style: TextStyle(
+        //                 fontSize: 14,
+        //                 color: Colors.black,
+        //                 fontWeight: FontWeight.w600,
+        //               ),
+        //             ),
+        //             const SizedBox(width: 4),
+        //             SvgPicture.asset("assets/icons/Star Icon.svg"),
+        //           ],
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ],
       ),
       body: ListView(
         children: [

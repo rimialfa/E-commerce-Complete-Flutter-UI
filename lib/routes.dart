@@ -1,3 +1,4 @@
+import 'package:app/screens/details/course_info_screen.dart';
 import 'package:flutter/widgets.dart';
 import 'package:app/guard.dart';
 import 'package:app/screens/products/products_screen.dart';
@@ -29,7 +30,7 @@ final Map<String, WidgetBuilder> routes = {
   OtpScreen.routeName: (context) => const OtpScreen(),
   HomeScreen.routeName: (context) => const HomeScreen(),
   ProductsScreen.routeName: (context) => ProductsScreen(),
-  DetailsScreen.routeName: (context) => const DetailsScreen(),
+  CourseInfoScreen.routeName: (context) => CourseInfoScreen(),
   CartScreen.routeName: (context) => const CartScreen(),
   ProfileScreen.routeName: (context) => const ProfileScreen(),
 };

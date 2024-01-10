@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
       length: tabs.length,
       child: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 16),
+          padding: const EdgeInsets.symmetric(vertical: 16),
           child: Column(
             children: [
               const HomeHeader(),
