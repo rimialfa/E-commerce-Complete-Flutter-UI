@@ -18,7 +18,7 @@ class NewProjectsScreen extends StatelessWidget {
             );
           } else if (snapshot.hasData) {
             var projects = snapshot.data!;
-            return PopularProducts(projects: projects);
+            return Expanded(child: PopularProducts(projects: projects));
           } else {
             return const Padding(
               padding: EdgeInsets.symmetric(vertical: 30),

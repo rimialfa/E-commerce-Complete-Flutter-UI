@@ -3,6 +3,7 @@ import 'package:app/screens/home/components/hotel_app_theme.dart';
 import 'package:app/services/models.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class ProjectListView extends StatelessWidget {
@@ -30,8 +31,7 @@ class ProjectListView extends StatelessWidget {
             transform: Matrix4.translationValues(
                 0.0, 50 * (1.0 - animation!.value), 0.0),
             child: Padding(
-              padding: const EdgeInsets.only(
-                  left: 24, right: 24, top: 8, bottom: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: InkWell(
                 splashColor: Colors.transparent,
                 onTap: onPress,
@@ -47,233 +47,215 @@ class ProjectListView extends StatelessWidget {
                     ],
                   ),
                   child: ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(16.0)),
-                    child: Stack(
-                      children: <Widget>[
-                        Column(
-                          children: <Widget>[
-                            AspectRatio(
-                              aspectRatio: 2,
-                              child: Hero(
-                                tag: project.id,
-                                child: Image.network(project.image,
-                                    fit: BoxFit.cover),
-                              ),
-                            ),
-                            Container(
-                              color: Colors.white,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 16, top: 16, bottom: 16),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: 4),
-                                            child: Text(
-                                              project.name,
-                                              textAlign: TextAlign.left,
-                                              style: const TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 16,
-                                              ),
-                                            ),
-                                          ),
-                                          Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: <Widget>[
-                                              const Icon(
-                                                FontAwesomeIcons.locationDot,
-                                                size: 12,
-                                                color: kPrimaryColor,
-                                              ),
-                                              const SizedBox(
-                                                width: 4,
-                                              ),
-                                              Text(
-                                                project.country,
-                                                style: TextStyle(
-                                                  fontSize: 14,
-                                                  color: Colors.grey
-                                                      .withOpacity(0.8),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              border: Border.all(
-                                                width: 1,
-                                                color: Colors.grey
-                                                    .withOpacity(0.5),
-                                              ),
-                                              borderRadius:
-                                                  const BorderRadius.all(
-                                                Radius.circular(16.0),
-                                              ),
-                                            ),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Column(
-                                                    children: [
-                                                      Text(
-                                                        "${project.price}",
-                                                        style: const TextStyle(
-                                                            color:
-                                                                kPrimaryColor,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w900),
-                                                      ),
-                                                      const Text('Goal'),
-                                                    ],
-                                                  ),
-                                                  Padding(
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                        horizontal: 10.0),
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                        border: Border(
-                                                          left: BorderSide(
-                                                              width: 1,
-                                                              color: Colors.grey
-                                                                  .withOpacity(
-                                                                      0.8)),
-                                                          right: BorderSide(
-                                                            width: 1,
-                                                            color: Colors.grey
-                                                                .withOpacity(
-                                                                    0.8),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .symmetric(
-                                                                horizontal:
-                                                                    10.0),
-                                                        child: Column(
-                                                          children: [
-                                                            Text(
-                                                              "${project.totalSales}",
-                                                              style: const TextStyle(
-                                                                  color:
-                                                                      kPrimaryColor,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w900),
-                                                            ),
-                                                            const Text(
-                                                                'Collected '),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Column(
-                                                    children: [
-                                                      Text(
-                                                        "${project.remainingSales}",
-                                                        style: const TextStyle(
-                                                            color:
-                                                                kPrimaryColor,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w900),
-                                                      ),
-                                                      const Text('Remaining'),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        right: 16, top: 16),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: <Widget>[
-                                        CircularPercentIndicator(
-                                          radius: 25.0,
-                                          lineWidth: 5.0,
-                                          percent: 0.5,
-                                          center: const Text(
-                                            "50%",
-                                            style: TextStyle(
-                                                color: kPrimaryColor,
-                                                fontSize: 11),
-                                          ),
-                                          progressColor: kPrimaryColor,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        Positioned(
-                          top: 8,
-                          right: 8,
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(32.0),
-                              ),
-                              onTap: () {},
-                              child: const Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Icon(
-                                  Icons.favorite_border,
-                                  color: kSecondaryColor,
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(16.0)),
+                      child: Column(
+                        children: [
+                          ProjectCardThumbnail(project: project),
+                          ProjectCardBody(project: project),
+                          ProjectCardActions()
+                        ],
+                      )),
                 ),
               ),
             ),
           ),
         );
       },
+    );
+  }
+}
+
+class ProjectCardThumbnail extends StatelessWidget {
+  const ProjectCardThumbnail({required this.project, super.key});
+  final Project project;
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        AspectRatio(
+          aspectRatio: 2,
+          child: Hero(
+            tag: project.id,
+            child: Image.network(project.image, fit: BoxFit.cover),
+          ),
+        ),
+        Positioned(
+          top: 152,
+          child: Container(
+            padding: const EdgeInsets.all(5),
+            color: kPrimaryColor800,
+            width: MediaQuery.of(context).size.width,
+            child: Row(
+              children: [
+                const Icon(
+                  FontAwesomeIcons.locationDot,
+                  size: 12,
+                  color: Colors.white,
+                ),
+                const Gap(4),
+                Text(
+                  project.country,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class ProjectCardBody extends StatelessWidget {
+  const ProjectCardBody({required this.project, super.key});
+  final Project project;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      padding: const EdgeInsets.only(left: 16, right: 16, top: 12),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Text(project.name,
+                  style: const TextStyle(
+                    fontSize: 16,
+                  )),
+            ],
+          ),
+          const Gap(12),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            "${project.price}",
+                            style: const TextStyle(
+                                color: kPrimaryColor,
+                                fontWeight: FontWeight.w900),
+                          ),
+                          const Text('Goal'),
+                        ],
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 10.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        decoration: BoxDecoration(
+                          border: Border(
+                            left: BorderSide(
+                                width: 1, color: Colors.grey.withOpacity(0.5)),
+                            right: BorderSide(
+                              width: 1,
+                              color: Colors.grey.withOpacity(0.5),
+                            ),
+                          ),
+                        ),
+                        child: Column(
+                          children: [
+                            Text(
+                              "${project.totalSales}",
+                              style: const TextStyle(
+                                  color: kPrimaryColor,
+                                  fontWeight: FontWeight.w900),
+                            ),
+                            const Text('Collected '),
+                          ],
+                        ),
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            "${project.remainingSales}",
+                            style: const TextStyle(
+                                color: kPrimaryColor,
+                                fontWeight: FontWeight.w900),
+                          ),
+                          const Text('Remaining'),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  CircularPercentIndicator(
+                    radius: 25.0,
+                    lineWidth: 5.0,
+                    percent: 0.5,
+                    center: const Text(
+                      "50%",
+                      style: TextStyle(color: kPrimaryColor, fontSize: 11),
+                    ),
+                    progressColor: kPrimaryColor,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const Gap(12),
+        ],
+      ),
+    );
+  }
+}
+
+class ProjectCardActions extends StatelessWidget {
+  const ProjectCardActions({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      color: kPrimaryColor,
+      child: Row(children: [
+        Expanded(
+          child: Center(
+            child: InkWell(
+              onTap: () {},
+              child: const Text(
+                'Donate Now',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          ),
+        ),
+        Container(
+          color: Colors.white.withOpacity(0.5),
+          width: 1,
+          margin: const EdgeInsets.symmetric(vertical: 8),
+        ),
+        Expanded(
+          child: Center(
+            child: InkWell(
+              onTap: () {
+                print('Add to Cart');
+              },
+              child: const Text(
+                'Add to Cart',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          ),
+        )
+      ]),
     );
   }
 }

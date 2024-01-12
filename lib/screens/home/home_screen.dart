@@ -54,50 +54,48 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return DefaultTabController(
       length: tabs.length,
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          child: Column(
-            children: [
-              const HomeHeader(),
-              const DiscountBanner(),
-              TabBar(
-                onTap: (index) {
-                  setState(() {
-                    tabIndex = index;
-                  });
-                },
-                tabs: tabs,
-                isScrollable: true,
-                tabAlignment: TabAlignment.start,
-                labelColor: kPrimaryColor,
-                indicatorColor: kPrimaryColor,
-              ),
-              const SizedBox(height: 20),
-              myContents[tabIndex],
-              // TabBarView(
-              //   children: [
-              //     Icon(Icons.directions_car),
-              //     Icon(Icons.directions_transit),
-              //     Icon(Icons.directions_bike),
-              //   ],
-              // ),
-              // Categories(),
-              // SpecialOffers(),
-              // const SizedBox(height: 20),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        child: Column(
+          children: [
+            const HomeHeader(),
+            const DiscountBanner(),
+            TabBar(
+              onTap: (index) {
+                setState(() {
+                  tabIndex = index;
+                });
+              },
+              tabs: tabs,
+              isScrollable: true,
+              tabAlignment: TabAlignment.start,
+              labelColor: kPrimaryColor,
+              indicatorColor: kPrimaryColor,
+            ),
+            const SizedBox(height: 20),
+            myContents[tabIndex],
+            // TabBarView(
+            //   children: [
+            //     Icon(Icons.directions_car),
+            //     Icon(Icons.directions_transit),
+            //     Icon(Icons.directions_bike),
+            //   ],
+            // ),
+            // Categories(),
+            // SpecialOffers(),
+            // const SizedBox(height: 20),
 
-              // Visibility(
-              //     visible: isLoaded,
-              //     replacement: const Padding(
-              //       padding: EdgeInsets.only(top: 75),
-              //       child: CircularProgressIndicator(
-              //         color: kPrimaryColor,
-              //       ),
-              //     ),
-              //     child: PopularProducts(projects: projects)),
-              const SizedBox(height: 20),
-            ],
-          ),
+            // Visibility(
+            //     visible: isLoaded,
+            //     replacement: const Padding(
+            //       padding: EdgeInsets.only(top: 75),
+            //       child: CircularProgressIndicator(
+            //         color: kPrimaryColor,
+            //       ),
+            //     ),
+            //     child: PopularProducts(projects: projects)),
+            const SizedBox(height: 20),
+          ],
         ),
       ),
     );

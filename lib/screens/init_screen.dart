@@ -42,7 +42,7 @@ class _InitScreenState extends State<InitScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: AppBar(),
-      body: pages[currentSelectedIndex],
+      body: SafeArea(child: pages[currentSelectedIndex]),
       drawer: const NavDrawer(),
       bottomNavigationBar: BottomNavigationBar(
         onTap: updateCurrentIndex,
