@@ -1,3 +1,5 @@
+import 'package:app/constants.dart';
+import 'package:app/services/models.dart';
 import 'package:flutter/material.dart';
 import 'design_course_app_theme.dart';
 
@@ -22,7 +24,7 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
         duration: const Duration(milliseconds: 1000), vsync: this);
     animation = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
         parent: animationController!,
-        curve: Interval(0, 1.0, curve: Curves.fastOutSlowIn)));
+        curve: const Interval(0, 1.0, curve: Curves.fastOutSlowIn)));
     setData();
     super.initState();
   }
@@ -48,6 +50,8 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
     final double tempHeight = MediaQuery.of(context).size.height -
         (MediaQuery.of(context).size.width / 1.2) +
         24.0;
+    final agrs =
+        ModalRoute.of(context)!.settings.arguments as ProductDetailsArguments;
     return Container(
       color: DesignCourseAppTheme.nearlyWhite,
       child: Scaffold(
@@ -57,9 +61,12 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
             Column(
               children: <Widget>[
                 AspectRatio(
-                  aspectRatio: 1.2,
-                  child: Image.asset('assets/images/alsafakw-ar-logo.png'),
-                ),
+                    aspectRatio: 1.2,
+                    child: Hero(
+                      tag: agrs.project.id,
+                      child:
+                          Image.network(agrs.project.image, fit: BoxFit.cover),
+                    )),
               ],
             ),
             Positioned(
@@ -97,9 +104,9 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
                             padding: const EdgeInsets.only(
                                 top: 32.0, left: 18, right: 16),
                             child: Text(
-                              'Web Design\nCourse',
+                              agrs.project.name,
                               textAlign: TextAlign.left,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 22,
                                 letterSpacing: 0.27,
@@ -115,17 +122,17 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
                                 Text(
-                                  '\$28.99',
+                                  "KD ${agrs.project.price}",
                                   textAlign: TextAlign.left,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.w200,
                                     fontSize: 22,
                                     letterSpacing: 0.27,
-                                    color: DesignCourseAppTheme.nearlyBlue,
+                                    color: kPrimaryColor,
                                   ),
                                 ),
                                 Container(
-                                  child: Row(
+                                  child: const Row(
                                     children: <Widget>[
                                       Text(
                                         '4.3',
@@ -139,7 +146,7 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
                                       ),
                                       Icon(
                                         Icons.star,
-                                        color: DesignCourseAppTheme.nearlyBlue,
+                                        color: kSecondaryColor,
                                         size: 24,
                                       ),
                                     ],
@@ -155,9 +162,14 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
                               padding: const EdgeInsets.all(8),
                               child: Row(
                                 children: <Widget>[
-                                  getTimeBoxUI('24', 'Classe'),
-                                  getTimeBoxUI('2hours', 'Time'),
-                                  getTimeBoxUI('24', 'Seat'),
+                                  getTimeBoxUI(
+                                      agrs.project.price.toString(), 'Goal'),
+                                  getTimeBoxUI(
+                                      agrs.project.totalSales.toString(),
+                                      'Collected'),
+                                  getTimeBoxUI(
+                                      agrs.project.remainingSales.toString(),
+                                      'Remaining'),
                                 ],
                               ),
                             ),
@@ -170,9 +182,9 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
                                 padding: const EdgeInsets.only(
                                     left: 16, right: 16, top: 8, bottom: 8),
                                 child: Text(
-                                  'Lorem ipsum is simply dummy text of printing & typesetting industry, Lorem ipsum is simply dummy text of printing & typesetting industry.',
+                                  agrs.project.description,
                                   textAlign: TextAlign.justify,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.w200,
                                     fontSize: 14,
                                     letterSpacing: 0.27,
@@ -207,9 +219,9 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
                                             color: DesignCourseAppTheme.grey
                                                 .withOpacity(0.2)),
                                       ),
-                                      child: Icon(
+                                      child: const Icon(
                                         Icons.add,
-                                        color: DesignCourseAppTheme.nearlyBlue,
+                                        color: kPrimaryColor,
                                         size: 28,
                                       ),
                                     ),
@@ -221,7 +233,7 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
                                     child: Container(
                                       height: 48,
                                       decoration: BoxDecoration(
-                                        color: DesignCourseAppTheme.nearlyBlue,
+                                        color: kPrimaryColor,
                                         borderRadius: const BorderRadius.all(
                                           Radius.circular(16.0),
                                         ),
@@ -234,9 +246,9 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
                                               blurRadius: 10.0),
                                         ],
                                       ),
-                                      child: Center(
+                                      child: const Center(
                                         child: Text(
-                                          'Join Course',
+                                          'Donate Now',
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -271,17 +283,17 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
                 scale: CurvedAnimation(
                     parent: animationController!, curve: Curves.fastOutSlowIn),
                 child: Card(
-                  color: DesignCourseAppTheme.nearlyBlue,
+                  color: kSecondaryColor,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50.0)),
                   elevation: 10.0,
                   child: Container(
                     width: 60,
                     height: 60,
-                    child: Center(
+                    child: const Center(
                       child: Icon(
-                        Icons.favorite,
-                        color: DesignCourseAppTheme.nearlyWhite,
+                        Icons.favorite_border,
+                        color: Colors.white,
                         size: 30,
                       ),
                     ),
@@ -299,7 +311,7 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
                   child: InkWell(
                     borderRadius:
                         BorderRadius.circular(AppBar().preferredSize.height),
-                    child: Icon(
+                    child: const Icon(
                       Icons.arrow_back_ios,
                       color: DesignCourseAppTheme.nearlyBlack,
                     ),
@@ -344,7 +356,7 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
                   letterSpacing: 0.27,
-                  color: DesignCourseAppTheme.nearlyBlue,
+                  color: kPrimaryColor,
                 ),
               ),
               Text(
@@ -363,4 +375,9 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
       ),
     );
   }
+}
+
+class ProductDetailsArguments {
+  final Project project;
+  ProductDetailsArguments({required this.project});
 }

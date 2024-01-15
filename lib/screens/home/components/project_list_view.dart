@@ -1,4 +1,5 @@
 import 'package:app/constants.dart';
+import 'package:app/screens/details/course_info_screen.dart';
 import 'package:app/screens/home/components/hotel_app_theme.dart';
 import 'package:app/services/models.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,6 @@ class ProjectListView extends StatelessWidget {
   const ProjectListView(
       {Key? key,
       required this.project,
-      required this.onPress,
       this.animationController,
       this.animation})
       : super(key: key);
@@ -18,7 +18,6 @@ class ProjectListView extends StatelessWidget {
   final Project project;
   final AnimationController? animationController;
   final Animation<double>? animation;
-  final VoidCallback onPress;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +33,10 @@ class ProjectListView extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: InkWell(
                 splashColor: Colors.transparent,
-                onTap: onPress,
+                onTap: () {
+                  Navigator.pushNamed(context, CourseInfoScreen.routeName,
+                      arguments: ProductDetailsArguments(project: project));
+                },
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(16.0)),
@@ -193,10 +195,11 @@ class ProjectCardBody extends StatelessWidget {
                   CircularPercentIndicator(
                     radius: 25.0,
                     lineWidth: 5.0,
-                    percent: 0.5,
-                    center: const Text(
-                      "50%",
-                      style: TextStyle(color: kPrimaryColor, fontSize: 11),
+                    percent: project.percentage,
+                    center: Text(
+                      "${(project.percentage * 100).floor()}%",
+                      style:
+                          const TextStyle(color: kPrimaryColor, fontSize: 11),
                     ),
                     progressColor: kPrimaryColor,
                   ),
@@ -219,13 +222,13 @@ class ProjectCardActions extends StatelessWidget {
     return Container(
       height: 50,
       color: kPrimaryColor,
-      child: Row(children: [
-        Expanded(
-          child: Center(
-            child: InkWell(
-              onTap: () {},
+      child: Row(
+        children: [
+          Expanded(
+            child: TextButton(
+              onPressed: () {},
               child: const Text(
-                'Donate Now',
+                'Donate now',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16,
@@ -233,29 +236,25 @@ class ProjectCardActions extends StatelessWidget {
               ),
             ),
           ),
-        ),
-        Container(
-          color: Colors.white.withOpacity(0.5),
-          width: 1,
-          margin: const EdgeInsets.symmetric(vertical: 8),
-        ),
-        Expanded(
-          child: Center(
-            child: InkWell(
-              onTap: () {
-                print('Add to Cart');
-              },
+          Container(
+            color: Colors.white.withOpacity(0.5),
+            width: 1,
+            margin: const EdgeInsets.symmetric(vertical: 8),
+          ),
+          Expanded(
+            child: TextButton(
+              onPressed: () {},
               child: const Text(
-                'Add to Cart',
+                'Add to cart',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16,
                 ),
               ),
             ),
-          ),
-        )
-      ]),
+          )
+        ],
+      ),
     );
   }
 }

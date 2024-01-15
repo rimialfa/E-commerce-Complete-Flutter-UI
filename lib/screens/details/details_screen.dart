@@ -16,6 +16,7 @@ class DetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final agrs =
         ModalRoute.of(context)!.settings.arguments as ProductDetailsArguments;
+        
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,

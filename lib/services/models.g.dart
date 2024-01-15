@@ -16,6 +16,7 @@ Project _$ProjectFromJson(Map<String, dynamic> json) => Project(
       country: json['country'] as String? ?? '',
       totalSales: json['total_sales'] as int? ?? 0,
       remainingSales: json['remaining_sales'] as int? ?? 0,
+      percentage: json['percentage'].toDouble() ?? 0.0,
     );
 
 Map<String, dynamic> _$ProjectToJson(Project instance) => <String, dynamic>{

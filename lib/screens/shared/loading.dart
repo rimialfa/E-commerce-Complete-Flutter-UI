@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app/constants.dart';
 
 class Loader extends StatelessWidget {
   const Loader({super.key});
@@ -6,9 +7,9 @@ class Loader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(
-      width: 50,
-      height: 50,
-      child: CircularProgressIndicator(color: Color.fromRGBO(186, 156, 109, 1)),
+      width: 30,
+      height: 30,
+      child: CircularProgressIndicator(color: kPrimaryColor),
     );
   }
 }

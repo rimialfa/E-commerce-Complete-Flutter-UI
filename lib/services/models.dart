@@ -12,6 +12,7 @@ class Project {
   final String country;
   final int totalSales;
   final int remainingSales;
+  final double percentage;
 
   Project({
     this.id = -1,
@@ -23,6 +24,7 @@ class Project {
     this.country = '',
     this.totalSales = 0,
     this.remainingSales = 0,
+    this.percentage = 0,
   });
 
   factory Project.fromJson(Map<String, dynamic> json) =>

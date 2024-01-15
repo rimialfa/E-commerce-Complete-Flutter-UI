@@ -51,12 +51,6 @@ class _PopularProductsState extends State<PopularProducts>
                     curve: Curves.fastOutSlowIn)));
         animationController?.forward();
         return ProjectListView(
-          onPress: () => (
-            Navigator.pushNamed(
-              context,
-              CourseInfoScreen.routeName,
-            ),
-          ),
           project: widget.projects[index],
           animation: animation,
           animationController: animationController!,
