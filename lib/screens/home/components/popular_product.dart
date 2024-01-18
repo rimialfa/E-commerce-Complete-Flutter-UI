@@ -1,4 +1,4 @@
-import 'package:app/screens/details/course_info_screen.dart';
+import 'package:app/screens/details/project_detail_screen.dart';
 import 'package:app/screens/home/components/project_list_view.dart';
 import 'package:app/services/models.dart';
 import 'package:flutter/material.dart';

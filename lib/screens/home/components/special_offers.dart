@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app/screens/products/products_screen.dart';
-
-import 'section_title.dart';
+import 'package:gap/gap.dart';
 
 class SpecialOffers extends StatelessWidget {
   const SpecialOffers({
@@ -12,37 +11,24 @@ class SpecialOffers extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: SectionTitle(
-            title: "Urgent projects",
-            press: () {},
-          ),
+        SpecialOfferCard(
+          image: "assets/images/ImageBanner2.jpg",
+          category: "Widows",
+          numOfBrands: 8,
+          press: () {
+            Navigator.pushNamed(context, ProductsScreen.routeName);
+          },
         ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              SpecialOfferCard(
-                image: "assets/images/ImageBanner2.jpg",
-                category: "Widows",
-                numOfBrands: 8,
-                press: () {
-                  Navigator.pushNamed(context, ProductsScreen.routeName);
-                },
-              ),
-              SpecialOfferCard(
-                image: "assets/images/ImageBanner3.jpg",
-                category: "Orphans",
-                numOfBrands: 12,
-                press: () {
-                  Navigator.pushNamed(context, ProductsScreen.routeName);
-                },
-              ),
-              const SizedBox(width: 20),
-            ],
-          ),
+        const Gap(16),
+        SpecialOfferCard(
+          image: "assets/images/ImageBanner3.jpg",
+          category: "Orphans",
+          numOfBrands: 12,
+          press: () {
+            Navigator.pushNamed(context, ProductsScreen.routeName);
+          },
         ),
+        const SizedBox(width: 20),
       ],
     );
   }
@@ -67,51 +53,47 @@ class SpecialOfferCard extends StatelessWidget {
       padding: const EdgeInsets.only(left: 20),
       child: GestureDetector(
         onTap: press,
-        child: SizedBox(
-          width: 242,
-          height: 131,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Stack(
-              children: [
-                Image.asset(image, fit: BoxFit.cover),
-                Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Colors.black54,
-                        Colors.black38,
-                        Colors.black26,
-                        Colors.transparent,
-                      ],
-                    ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Stack(
+            children: [
+              Image.asset(image, fit: BoxFit.cover),
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.black54,
+                      Colors.black38,
+                      Colors.black26,
+                      Colors.transparent,
+                    ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 15,
-                    vertical: 10,
-                  ),
-                  child: Text.rich(
-                    TextSpan(
-                      style: const TextStyle(color: Colors.white),
-                      children: [
-                        TextSpan(
-                          text: "$category\n",
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                  vertical: 10,
+                ),
+                child: Text.rich(
+                  TextSpan(
+                    style: const TextStyle(color: Colors.white),
+                    children: [
+                      TextSpan(
+                        text: "$category\n",
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
-                        TextSpan(text: "$numOfBrands projects")
-                      ],
-                    ),
+                      ),
+                      TextSpan(text: "$numOfBrands projects")
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

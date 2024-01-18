@@ -39,17 +39,13 @@ class _HomeScreenState extends State<HomeScreen> {
     const tabs = [
       Tab(text: 'New Projects'),
       Tab(text: 'Urgent'),
-      Tab(text: 'Need Support'),
       Tab(text: 'Near to Complete'),
-      Tab(text: 'More Impact'),
     ];
 
     const List<Widget> myContents = [
       NewProjectsScreen(),
       SpecialOffers(),
-      Text('This is Need Support screen'),
       Text('This is Near to Complete screen'),
-      Text('This is More Impact screen'),
     ];
 
     return DefaultTabController(
