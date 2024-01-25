@@ -1,12 +1,13 @@
 import 'package:app/components/project_stats.dart';
 import 'package:app/constants.dart';
+import 'package:app/providers/cart_provider.dart';
 import 'package:app/screens/details/project_detail_screen.dart';
 import 'package:app/screens/home/components/hotel_app_theme.dart';
 import 'package:app/services/models.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:provider/provider.dart';
 
 class ProjectListView extends StatelessWidget {
   const ProjectListView(
@@ -50,15 +51,15 @@ class ProjectListView extends StatelessWidget {
                     ],
                   ),
                   child: ClipRRect(
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(16.0)),
-                      child: Column(
-                        children: [
-                          ProjectCardThumbnail(project: project),
-                          ProjectCardBody(project: project),
-                          ProjectCardActions()
-                        ],
-                      )),
+                    borderRadius: const BorderRadius.all(Radius.circular(16.0)),
+                    child: Column(
+                      children: [
+                        ProjectCardThumbnail(project: project),
+                        ProjectCardBody(project: project),
+                        ProjectCardActions(project: project)
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -141,8 +142,8 @@ class ProjectCardBody extends StatelessWidget {
 }
 
 class ProjectCardActions extends StatelessWidget {
-  const ProjectCardActions({super.key});
-
+  const ProjectCardActions({super.key, required this.project});
+  final Project project;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -169,7 +170,9 @@ class ProjectCardActions extends StatelessWidget {
           ),
           Expanded(
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                context.read<CartProvider>().addItem(project, 1, 1);
+              },
               child: const Text(
                 'Add to cart',
                 style: TextStyle(

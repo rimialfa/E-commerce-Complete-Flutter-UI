@@ -9,27 +9,33 @@ class SpecialOffers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SpecialOfferCard(
-          image: "assets/images/ImageBanner2.jpg",
-          category: "Widows",
-          numOfBrands: 8,
-          press: () {
-            Navigator.pushNamed(context, ProductsScreen.routeName);
-          },
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Gap(10),
+            SpecialOfferCard(
+              image: "assets/images/ImageBanner2.jpg",
+              category: "Widows",
+              numOfBrands: 8,
+              press: () {
+                Navigator.pushNamed(context, ProductsScreen.routeName);
+              },
+            ),
+            const Gap(16),
+            SpecialOfferCard(
+              image: "assets/images/ImageBanner3.jpg",
+              category: "Orphans",
+              numOfBrands: 12,
+              press: () {
+                Navigator.pushNamed(context, ProductsScreen.routeName);
+              },
+            ),
+            const SizedBox(width: 20),
+          ],
         ),
-        const Gap(16),
-        SpecialOfferCard(
-          image: "assets/images/ImageBanner3.jpg",
-          category: "Orphans",
-          numOfBrands: 12,
-          press: () {
-            Navigator.pushNamed(context, ProductsScreen.routeName);
-          },
-        ),
-        const SizedBox(width: 20),
-      ],
+      ),
     );
   }
 }

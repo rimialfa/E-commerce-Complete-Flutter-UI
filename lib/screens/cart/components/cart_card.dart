@@ -1,31 +1,31 @@
+import 'package:app/services/models.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
-import '../../../models/Cart.dart';
 
 class CartCard extends StatelessWidget {
   const CartCard({
     Key? key,
-    required this.cart,
+    required this.cartItem,
   }) : super(key: key);
 
-  final Cart cart;
+  final CartItem cartItem;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         SizedBox(
-          width: 88,
+          width: 150,
           child: AspectRatio(
-            aspectRatio: 0.88,
+            aspectRatio: 1.5,
             child: Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: const Color(0xFFF5F6F9),
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Image.asset(cart.product.images[0]),
+              child: Image.network(cartItem.project.image),
             ),
           ),
         ),
@@ -34,19 +34,20 @@ class CartCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              cart.product.title,
+              cartItem.project.name,
               style: const TextStyle(color: Colors.black, fontSize: 16),
               maxLines: 2,
             ),
             const SizedBox(height: 8),
             Text.rich(
               TextSpan(
-                text: "\$${cart.product.price}",
+                text: "\KD${cartItem.amount}",
                 style: const TextStyle(
                     fontWeight: FontWeight.w600, color: kPrimaryColor),
                 children: [
                   TextSpan(
-                      text: " x${cart.numOfItem}",
+                      // text: " x${cart.numOfItem}",
+                      text: " x1",
                       style: Theme.of(context).textTheme.bodyLarge),
                 ],
               ),

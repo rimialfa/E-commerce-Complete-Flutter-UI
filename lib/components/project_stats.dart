@@ -16,6 +16,7 @@ class ProjectStats extends StatelessWidget {
             Row(
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       "${project.price}",
@@ -39,6 +40,7 @@ class ProjectStats extends StatelessWidget {
                     ),
                   ),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
                         "${project.totalSales}",
@@ -50,6 +52,7 @@ class ProjectStats extends StatelessWidget {
                   ),
                 ),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       "${project.remainingSales}",

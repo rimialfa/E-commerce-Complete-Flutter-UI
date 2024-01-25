@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     const List<Widget> myContents = [
       NewProjectsScreen(),
-      SpecialOffers(),
+      Text('This is Urgent project screen'),
       Text('This is Near to Complete screen'),
     ];
 

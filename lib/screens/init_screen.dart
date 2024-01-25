@@ -1,4 +1,5 @@
 import 'package:app/screens/home/components/drawer.dart';
+import 'package:app/screens/home/components/special_offers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:app/constants.dart';
@@ -29,7 +30,7 @@ class _InitScreenState extends State<InitScreen> {
   final pages = [
     const HomeScreen(),
     const Center(
-      child: Text("Donate by Category Screen"),
+      child: SpecialOffers(),
     ),
     // const FavoriteScreen(),
     const Center(

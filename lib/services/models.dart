@@ -32,3 +32,11 @@ class Project {
 
   Map<String, dynamic> toJson() => _$ProjectToJson(this);
 }
+
+class CartItem {
+  final Project project;
+  final int amount;
+  final int qty;
+
+  CartItem({required this.project, this.amount = 1, this.qty = 1});
+}
